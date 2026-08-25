@@ -44,7 +44,7 @@ int main()
 
             if(extra_argu!=nullptr)
             {
-                printf("INVALID ARGUMENTS");
+                printf("INVALID ARGUMENTS\n");
                 continue;
             }
 
