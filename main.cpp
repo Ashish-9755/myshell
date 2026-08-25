@@ -40,6 +40,14 @@ int main()
         {
             char* path = strtok(nullptr," \t\n");
 
+            char* extra_argu = strtok(nullptr," \t\n");
+
+            if(extra_argu!=nullptr)
+            {
+                printf("INVALID ARGUMENTS");
+                continue;
+            }
+
             change_dir(path,home);
         }
 
