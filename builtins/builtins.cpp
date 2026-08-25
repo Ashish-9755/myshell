@@ -15,27 +15,22 @@ void pwd()
     printf("%s\n", cwd);
 }
 
-void change_dir(char* path)
+
+void change_dir(char* path,char* home)
 {
-    if(strcmp(path,".")==0)
-    {
+   if(path==nullptr)
+   {
+        if(chdir(home)==-1)
+        {
+            perror("chdir");
+        }
         return;
-    }
-
-    if(strcmp(path,"..")==0)
-    {
-        return;
-    }
-
-     if(strcmp(path,"~")==0)
-    {
-        perror("chdir");
-        return ;
-    }
+   }
 
     if(chdir(path)==-1)
     {
         perror("chdir");
-        return ;
     }
+
 }
+

@@ -2,7 +2,6 @@
 #define BUILTINS_H
 
 void pwd();
-
-void change_dir(char* path);
+void change_dir(char* path,char* home);
 
 #endif
