@@ -26,7 +26,7 @@ int main()
         char input_cpy[2000];
         if (fgets(input, sizeof(input), stdin) == nullptr)
         {
-            perror("input error");
+            perror("fgets");
             return 1;
         }
         strcpy(input_cpy, input);

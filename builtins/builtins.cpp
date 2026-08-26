@@ -82,7 +82,7 @@ void echo(char* input)
         pointer++;
     }
 
-    if(*(pointer + strlen(pointer)-1)=='\n')
+    if(strlen(pointer)>0 && *(pointer + strlen(pointer)-1)=='\n')
     {
         *(pointer + strlen(pointer)-1)='\0';
     }
