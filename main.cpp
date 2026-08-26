@@ -7,6 +7,8 @@
 int main()
 {
     char home[2000];
+    char prev[2000];
+    prev[0] = '\0';
     if(getcwd(home,sizeof(home))==nullptr)
     {
         perror("home");
@@ -48,8 +50,9 @@ int main()
                 continue;
             }
 
-            change_dir(path,home);
+            change_dir(path,home,prev);
         }
+
 
         else if(strcmp(cmnd,"exit")==0)
         {
