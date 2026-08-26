@@ -31,20 +31,17 @@ void change_dir(char *path, char *home, char *prev)
             perror("chdir");
             return;
         }
-
-        strcpy(prev, curr);
-        return;
     }
 
-    else if (strcmp(path, "-")==0)
+    else if (strcmp(path, "-") == 0)
     {
-        if (prev[0]=='\0')
+        if (prev[0] == '\0')
         {
             printf("no previous working directory is set\n");
             return;
         }
 
-        else 
+        else
         {
             if (chdir(prev) == -1)
             {
@@ -52,9 +49,15 @@ void change_dir(char *path, char *home, char *prev)
                 return;
             }
         }
+    }
 
-        strcpy(prev, curr);
-        return;
+    else if (strcmp(path, "~") == 0)
+    {
+        if (chdir(home) == -1)
+        {
+            perror("chdir");
+            return;
+        }
     }
 
     else if (chdir(path) == -1)
@@ -64,4 +67,5 @@ void change_dir(char *path, char *home, char *prev)
     }
 
     strcpy(prev, curr);
+    return;
 }
