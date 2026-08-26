@@ -42,6 +42,11 @@ void print_prompt (char* home)
         printf("~ >");
     }
 
+    else if(strncmp(cwd,home,strlen(home))==0 && cwd[strlen(home)]!='\0')
+    {
+        printf("~%s >",cwd + strlen(home));
+    }
+    
     else
     {
         printf("%s >",cwd);
