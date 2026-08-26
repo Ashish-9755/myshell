@@ -48,6 +48,7 @@ void change_dir(char *path, char *home, char *prev)
                 perror("chdir");
                 return;
             }
+            printf("%s\n",prev);
         }
     }
 
