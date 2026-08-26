@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<unistd.h>
-#include<string.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
 #include "prompt/prompt.h"
 #include "builtins/builtins.h"
 
@@ -9,56 +9,80 @@ int main()
     char home[2000];
     char prev[2000];
     prev[0] = '\0';
-    if(getcwd(home,sizeof(home))==nullptr)
+    if (getcwd(home, sizeof(home)) == nullptr)
     {
         perror("home");
         return 1;
     }
 
-    while(true)
-    {
+    while (true)
+    {   //get the prompt
         print_prompt(home);
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //get users input
         char input[2000];
-        if(fgets(input,sizeof(input),stdin)==nullptr)
+        char input_cpy[2000];
+        if (fgets(input, sizeof(input), stdin) == nullptr)
         {
             perror("input error");
             return 1;
         }
+        strcpy(input_cpy, input);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        char* cmnd = strtok(input," \t\n");
+        //tokenize the inputs
+        char *cmnd = strtok(input, " \t\n");
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        if(cmnd==nullptr)
+        //if no input is give 
+
+        if (cmnd == nullptr)
         {
             continue;
         }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        else if(strcmp(cmnd,"pwd")==0)
+
+        else if (strcmp(cmnd, "pwd") == 0)
         {
             pwd();
         }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-       else if(strcmp(cmnd,"cd")==0)
+        else if (strcmp(cmnd, "cd") == 0)
         {
-            char* path = strtok(nullptr," \t\n");
+            char *path = strtok(nullptr, " \t\n");
 
-            char* extra_argu = strtok(nullptr," \t\n");
+            char *extra_argu = strtok(nullptr, " \t\n");
 
-            if(extra_argu!=nullptr)
+            if (extra_argu != nullptr)
             {
                 printf("INVALID ARGUMENTS\n");
                 continue;
             }
 
-            change_dir(path,home,prev);
+            change_dir(path, home, prev);
         }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        else if(strcmp(cmnd,"exit")==0)
+        else if (strcmp(cmnd, "echo")==0)
+        {
+            char* stmt = input_cpy;
+            while(*stmt==' ' || *stmt =='\t') 
+            stmt++;
+
+            echo(stmt);
+        }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        else if (strcmp(cmnd, "exit") == 0)
         {
             break;
         }
-        
     }
 
     printf("exit from shell");

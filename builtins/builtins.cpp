@@ -70,3 +70,23 @@ void change_dir(char *path, char *home, char *prev)
     strcpy(prev, curr);
     return;
 }
+
+void echo(char* input)
+{
+    input = input + 4;
+
+    char* pointer = input;
+
+    while(*pointer==' '|| *pointer == '\t')
+    {
+        pointer++;
+    }
+
+    if(*(pointer + strlen(pointer)-1)=='\n')
+    {
+        *(pointer + strlen(pointer)-1)='\0';
+    }
+
+    printf("%s\n", pointer);
+
+}
