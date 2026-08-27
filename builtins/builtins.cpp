@@ -15,7 +15,7 @@ void pwd()
     printf("%s\n", cwd);
 }
 
-void change_dir(char *path, char *home, char *prev)
+void change_dir(const char *path,const char *home, char *prev)
 {
     char curr[2000];
     if (getcwd(curr, sizeof(curr)) == nullptr)
@@ -90,3 +90,4 @@ void echo(char* input)
     printf("%s\n", pointer);
 
 }
+
