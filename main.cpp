@@ -3,6 +3,8 @@
 #include <string.h>
 #include "prompt/prompt.h"
 #include "builtins/builtins.h"
+#include "ls/ls.h"
+
 
 int main()
 {
@@ -75,6 +77,14 @@ int main()
             stmt++;
 
             echo(stmt);
+        }
+
+        else if(strcmp(cmnd,"ls")==0)
+        {
+            char* path = strtok(NULL," \t\n");
+            
+            if(path==NULL)
+            ls();
         }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

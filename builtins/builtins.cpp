@@ -15,7 +15,7 @@ void pwd()
     printf("%s\n", cwd);
 }
 
-void change_dir(const char *path,const char *home, char *prev)
+void change_dir(const char *path, const char *home, char *prev)
 {
     char curr[2000];
     if (getcwd(curr, sizeof(curr)) == nullptr)
@@ -48,7 +48,7 @@ void change_dir(const char *path,const char *home, char *prev)
                 perror("chdir");
                 return;
             }
-            printf("%s\n",prev);
+            printf("%s\n", prev);
         }
     }
 
@@ -71,23 +71,23 @@ void change_dir(const char *path,const char *home, char *prev)
     return;
 }
 
-void echo(char* input)
+void echo(char *input)
 {
     input = input + 4;
 
-    char* pointer = input;
+    char *pointer = input;
 
-    while(*pointer==' '|| *pointer == '\t')
+    while (*pointer == ' ' || *pointer == '\t')
     {
         pointer++;
     }
 
-    if(strlen(pointer)>0 && *(pointer + strlen(pointer)-1)=='\n')
+    if (strlen(pointer) > 0 && *(pointer + strlen(pointer) - 1) == '\n')
     {
-        *(pointer + strlen(pointer)-1)='\0';
+        *(pointer + strlen(pointer) - 1) = '\0';
     }
 
     printf("%s\n", pointer);
-
 }
+
 
