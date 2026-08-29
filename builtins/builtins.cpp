@@ -90,4 +90,3 @@ void echo(char *input)
     printf("%s\n", pointer);
 }
 
-
