@@ -64,11 +64,10 @@ void print_long(struct stat info,char* filename)
     struct passwd* user = getpwuid(uid);
     printf(" %s",user->pw_name);
 
-    gid_t gid = info.st_gid;
     struct group *grp = getgrgid(info.st_gid);
     printf(" %s",grp->gr_name);
 
-    printf(" %lld",info.st_size);
+    printf(" %lld",(long long)info.st_size);
 
     struct tm* time = localtime(&info.st_mtime);
     char time_buffer[100];
