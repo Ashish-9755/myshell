@@ -1,5 +1,5 @@
 #ifndef LS_H
 #define LS_H
 
-void ls();
+void main_ls(char* input);
 #endif
